@@ -1,0 +1,49 @@
+{% extends 'home/Navbar2.html' %}
+{% block content %}
+<title>Doctor Profile</title>
+<style>
+h1   {font-size: 60px;
+        color: black}
+
+ul.new {
+    list-style-position: inside;
+    text-align: center;
+    font-size: 30px;
+    color:black;
+}
+button {
+   background-color: black;
+    color: white;
+    padding: 8px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    width: 300px;
+    border-radius: 20px;
+    margin-left: 20px;
+
+}
+
+
+</style>
+<center>
+<h1>Authorised Doctor</h1></br>
+<ul class = "new">
+<block>
+Name : {{ type.aname}}</br>
+Username : {{type.name}} </br>
+Type of user          : {{ type.type }} </br>
+Sex : {{type.sex}} </br>
+Phone Number          : {{ type.phno }} </br>
+Qualification         : {{type.qual}}  </br>
+Field  of Expertise   : {{type.field}} </br>
+
+</ul>
+
+</br>
+
+</block>
+</center>
+{%endblock%}

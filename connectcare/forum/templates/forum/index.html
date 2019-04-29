@@ -1,0 +1,58 @@
+
+{% extends "forum/base.html" %}
+{% block content %}
+{% load permission_tags %}
+<center><h1 style="font-size:50px;"><b>{{ title }}</b></h1></center>
+<div class='col-sm-6 col-sm-offset-3'>
+<br>
+<br>
+<form method='GET' action=''>
+<input type='text' name='q' placeholder='Search posts' value='{{ request.GET.q }}'/>
+<center><input type='submit' value='Search' class="button"/>
+<br>
+<br>
+{% if request.user|can:'add_question'%}
+  <a class="button" href="{% url 'create' %}">Add question</a></center>
+{% endif %}
+</form>
+{% for obj in object_list %}
+<div class="row">
+  <div class="col-sm-12">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>{{ obj.title }}</h3>
+        <p>{{ obj.content|linebreaks|truncatechars:120 }}</p>
+          <h4>Comments : {{obj.comments.count}}</h4>
+        <p><a href="/forum/{{obj.id}}/" class="button1" role="button">View</a></p>
+      </div>
+    </div>
+  </div>
+<hr/>
+</div>
+{% endfor %}
+
+
+<div class="pagination">
+    <span class="step-links">
+        <p>
+        {% if object_list.has_previous %}
+            <a href="?{{ page_request_var }}={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+        </span>
+
+        {% if object_list.has_next %}
+            <a href="?{{ page_request_var }}={{ object_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
+        {% endif %}
+        </p>
+    </span>
+</div>
+
+
+
+
+</div>
+
+{% endblock content %}

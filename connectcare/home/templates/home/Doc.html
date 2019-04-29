@@ -1,0 +1,43 @@
+{% extends 'home/Navbar.html' %}
+
+{% block content %}
+<title>ConnectCare</title>
+<head>
+  <center>
+    <br>
+    <br>
+
+<font size = "10" style = "color:white;">Welcome <b>{{ name }}</b></font>
+  </center>
+</head>
+<body>
+  <center>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <a href="pat" class="button button1" role="button">View Patients</a>
+    <a href="/view" class="button button1" role="button">View Patient Files </a>
+    <br>
+    <br>
+    <a href="/test" class="button button1" role="button">Upload Test Results</a>
+    <a href="/presc" class="button button1" role="button">Upload Prescriptions</a>
+    <br>
+    <br>
+    <a href="/forum" class="button button1" role="button">View Forum</a>
+    <a href="/dialogs" class="button button1" role="button">Chat</a>
+    <br>
+    <br>
+    <a href = "/schedule" class = "button button1">Schedule</a>
+
+
+  </center>
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,163 @@
+{%load staticfiles%}
+<html>
+<head>
+<title>{% block head_title %}ConnectCare|Forum{% endblock head_title %}</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <style>
+
+body {
+    font-family: "Lato", sans-serif;
+    background-image:url("{%static "forum_bg.jpg"%}");
+    background-size: cover;
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: black;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top:0px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+h1 {
+  color:black;
+  font-family: "Lato", sans-serif;
+  font-size:40px;
+}
+h3 {
+  color:black;
+  font-family: "Lato", sans-serif;
+  font-size:35px;
+}
+p {
+  color:black;
+  font-family: "Lato", sans-serif;
+  font-size:25px;
+}
+h4 {
+  color:black;
+  font-family: "Lato", sans-serif;
+  font-size:15px;
+}
+
+.button {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 8px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    width: 200px;
+    border-radius: 25px;
+}
+.button1 {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 8px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    width: 100%;
+    border-radius: 25px;
+}
+
+
+input[type=text]{
+    width: 100%;
+    font-size: 20;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: white;
+    border: none;
+    border-bottom: 2px solid black;
+    font-weight: bold;
+}
+
+
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<span style="font-size:45px;cursor:pointer" onclick="openNav()">&#9776;</span>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <h1 style="color:white;"><center>ConnectCare</center></h1>
+  <a href="/home">Home</a>
+  <a href="/profile">View Profile</a>
+  <a href="/logout">Logout</a>
+</div>
+
+<div id="main">
+    <div class='container'>
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+}
+</script>
+
+
+
+</body>
+</html>
+
+

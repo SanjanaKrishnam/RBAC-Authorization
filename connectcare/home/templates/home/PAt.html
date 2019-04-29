@@ -1,0 +1,109 @@
+{% extends 'home/Navbar.html' %}
+
+{% block content %}
+<style>
+  input[type=text]{
+    width: 50%;
+    font-size: 20;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: white;
+    border: none;
+    border-bottom: 2px solid black;
+    opacity : 0.5;
+    font-weight: bold;
+    color: black;
+}
+
+button{
+  background-color: white;
+  font-size: 20px;
+  padding: 14px 40px;
+  border-radius: 22px;
+
+}
+
+}
+</style>
+<title>ConnectCare</title>
+<head>
+  <center>
+<font size = "10" style = "color:white;">Welcome <b>{{ name }}</b></font>
+</head>
+
+
+<br>
+<br>
+<br>
+<br>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% load permission_tags %}
+
+{% if request.user|can:'search' %}
+<form  class = "example" type="get" action="." style="margin: 0">
+    <input  id="search_box" type="text" name="search_box"  placeholder="Search for Doctors..." >
+    <button id="search_submit" type="submit" >Submit</button>
+</form>
+{%endif%}
+
+
+
+<body>
+  <center>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+ 
+
+    {% if request.user|can:'view_doctors' %}
+      <a href = "/home/docts" class = "button button1">View Authorized doctors</a>
+    {% endif %}
+
+    {% if request.user|can:'view_results' %}
+      <a href = "/test" class = "button button1">View Test Results</br></a>
+    {% endif %}
+
+    {% if request.user|can:'view_forum' %}
+      <a href = "/forum" class = "button button1">View Forum</a>
+    {% endif %}
+
+    {% if request.user|can:'view_pres' %}
+      <a href = "/presc" class = "button button1">View Prescriptions</a>
+    {% endif %}
+
+    {% if request.user|can:'schedule' %}
+      <a href = "/schedule" class = "button button1">Schedule</a>
+    {% endif %}
+
+    {% if request.user|can:'view_patients' %}
+      <a href="pat" class="button button1" role="button">View Patients</a>
+    {% endif %}
+
+    {% if request.user|can:'view_records' %}
+      <a href="/view" class="button button1" role="button">View Patient History </a>
+    {% endif %}
+
+    {% if not user|has_role:'doctor,patient,public' %}
+      <b>WAITING FOR SYSTEM ADMIN TO AUTHORISE</b>
+    {% endif%}
+
+
+  </center>
+</body>
+
+{% endblock %}
+
+
+
+
+
+
+
+

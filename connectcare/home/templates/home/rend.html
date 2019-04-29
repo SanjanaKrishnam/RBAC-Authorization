@@ -1,0 +1,23 @@
+{% extends 'home/Navbar2.html' %}
+{%block content%}
+<title> Search results </title>
+
+
+
+<center><h1>Search results for {{name}} </h1></center>
+</br>
+<ul class = "new">
+{% for obj in query%}
+<li>
+  Doctor Name : {{obj.aname}} </br>
+</br>
+<form  type = "get" action = "docprof">
+  <input  id="docpr" type="hidden" name="docpr"  value = {{obj.name}} >
+  <button  type="submit">View Profile</button>
+</a>
+</form>
+</li>
+{% endfor %}
+
+</ul>
+{%endblock%}

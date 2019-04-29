@@ -1,0 +1,55 @@
+{% extends "forum/base.html" %}
+
+{% block head_title %}
+{{ instance.title }} | {{ block.super }}
+{% endblock head_title %}
+
+{% block content %}
+{% load permission_tags %}
+
+<div class='col-sm-6 col-sm-offset-3'>
+    <h1>Question:</h1> {{ instance.content|linebreaks }}
+        <p>
+              <small>
+                  <small>
+                  <small>
+                      <b>
+                      {{instance.timestamp}}
+                      </b>
+                  </small>
+                  </small>
+             </small>
+        </p>
+
+
+{% if request.user|can:'add_comment'%}
+  <a class="button1" href="{% url 'add_comment_to_post' id=instance.id %}">Add comment</a>
+{% endif %}
+<br>
+<br>
+{% for comment in instance.comments.all %}
+    <div class="comment">
+        <div class="col-sm-12">
+            <div class="thumbnail">
+                <div class="caption">
+                    <p>{{ comment.text|linebreaks }}</p>
+                    <small>
+                    <small>
+                        by {{ comment.author }}
+                        <div class="date">{{ comment.created_date }}</div>
+                    </small>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+{% empty %}
+    <p>No comments</p>
+{% endfor %}
+{%endblock content%}
+
+</div>
+
+
+
+

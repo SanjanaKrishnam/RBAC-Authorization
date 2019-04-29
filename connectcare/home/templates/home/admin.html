@@ -1,0 +1,90 @@
+
+<h1>SYSTEM ADMIN</h1>
+
+<form type="get" action="authorise">
+  <select id = "name" name ="doc_to_auth" >
+  	{% for drops in dropdown1%}
+  		<option value="{{drops.name}}">{{ drops.name }}</option>
+  	{%endfor%}
+  </select>
+  <button id="search_submit" type="submit" >Authorize Doctor</button>
+</li>
+</form>
+
+
+<form type="get" action="grant">
+  <select id = "name" name ="name">
+  {% for drops in dropdown2%}
+  	<option value="{{drops.name}}">{{ drops.name }}</option>
+  {%endfor%}
+  </select>
+  <select id = "permission" name ="permission">
+  {% for drops in dropdown3%}
+  	<option value="{{drops}}">{{ drops }}</option>
+  {%endfor%}
+  </select>
+  <button id="search_submit" type="submit">Grant Permission</button>
+</li>
+</form>
+
+<form type="get" action="revoke">
+  <select id = "name" name ="name">
+  {% for drops in dropdown2%}
+  	<option value="{{drops.name}}">{{ drops.name }}</option>
+  {%endfor%}
+  </select>
+  <select id = "permission" name ="permission">
+  {% for drops in dropdown3%}
+  	<option value="{{drops}}">{{ drops }}</option>
+  {%endfor%}
+  </select>
+  <button id="search_submit" type="submit">Revoke Permission</button>
+</li>
+</form>
+
+
+<form type="get" action="revoke_all">
+  <select id = "role" name ="role">
+  {% for drops in dropdown4%}
+  	<option value="{{drops}}">{{ drops}}</option>
+  {%endfor%}
+  </select>
+  <select id = "permission" name ="permission">
+  {% for drops in dropdown3%}
+  	<option value="{{drops}}">{{ drops }}</option>
+  {%endfor%}
+  </select>
+  <button id="search_submit" type="submit">Revoke Permission for all</button>
+</li>
+</form>
+
+<form type="get" action="grant_all">
+  <select id = "role" name ="role">
+  {% for drops in dropdown4%}
+  	<option value="{{drops}}">{{ drops}}</option>
+  {%endfor%}
+  </select>
+  <select id = "permission" name ="permission">
+  {% for drops in dropdown3%}
+  	<option value="{{drops}}">{{ drops }}</option>
+  {%endfor%}
+  </select>
+  <button id="search_submit" type="submit">Grant Permission for all</button>
+</li>
+</form>
+
+<form type="get" action="remove">
+  <select id = "name" name ="name">
+  {% for drops in dropdown2%}
+  	<option value="{{drops.name}}">{{ drops.name }}</option>
+  {%endfor%}
+  </select>
+  <select id = "role" name ="role">
+  {% for drops in dropdown5%}
+  	<option value="{{drops}}">{{ drops}}</option>
+  {%endfor%}
+  </select>
+
+  <button id="search_submit" type="submit">Remove role for user</button>
+</li>
+</form>

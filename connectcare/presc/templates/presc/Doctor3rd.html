@@ -1,0 +1,56 @@
+{% extends 'home/Navbar2.html' %}
+{% block content %}
+<style>
+input[type=text], input[type=date], input[type = color] option{
+    width: 23%;
+    font-size: 20px;
+    padding: 5px;
+    margin: 5px 0 10px 0;
+    display: inline-block;
+    border: none;
+    background: white;
+    border: none;
+    opacity : 0.5;
+    font-weight: bold;
+    color=white;
+
+}
+textarea {
+vertical-align: middle;
+  width: 33%;
+  font-size: 20px;
+  padding: 5px;
+  margin: 5px 0 10px 0;
+  display: inline-block;
+  border: none;
+  background: white;
+  border: none;
+  opacity : 0.5;
+  font-weight: bold;
+  color=white;
+}
+</style>
+<title>New Prescription</title>
+<center>
+<h1> New Prescription for {{names}}</h1>
+
+
+  <div class = "container">
+  <form action ="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <br>
+
+  <div class= "k">  </div>
+  <input id="sa" type = "hidden" name = "check" value = "sek" >
+  <button id="search_submit" type="submit" name="uploadtest" value = {{ set }}>Upload Prescription</button>
+  </form>
+  </div>
+
+</br>
+</br>
+</br>
+  <p><a href = "/presc" style = "font-size:30px;">Return</a></p>
+</ul>
+  </center>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'home/Navbar2.html' %}
+{%block content%}
+{% load permission_tags %}
+<title>View Documents</title>
+<center>
+<h1> View/Upload Medical Records</h1>
+</center>
+
+  <ul class = "new">
+    {% if request.user|can:'upload_records' %}
+      <a href = "uploads" class = "button">Click here to upload new files</a>
+    {% endif %}
+    <p style = " color:black;">Uploaded files:</p>
+    {% for obj in documents %}
+      <li>
+        <a href="{{ obj.document.url }}">{{ obj.document.name }}</a>
+        <small>
+            (Uploaded at: {{ obj.uploaded_at }})
+            {% if user|has_role:'doctor' %}
+              (Uploaded by: {{ obj.user}})
+            {% endif %}
+       </small>
+      </li>
+    {% endfor %}
+  </ul>
+{%endblock%}
+

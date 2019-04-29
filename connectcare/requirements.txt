@@ -1,0 +1,6 @@
+django>=2.0.0
+django-private-chat
+django-model-utils==2.6.1
+# Additional requirements go here
+django-braces==1.12.0
+websockets==3.2

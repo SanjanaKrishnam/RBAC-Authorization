@@ -1,0 +1,60 @@
+{% extends 'home/Navbar2.html' %}
+{% block content %}
+<title>Doctor Profile</title>
+
+{%load staticfiles%}
+{% load permission_tags %}
+<style>
+h1   {font-size: 60px;}
+body {
+    font-family: "Lato", sans-serif;
+    background-image:url("{%static "connectcaremajblur.jpg"%}");
+    background-size: cover;
+}
+
+
+ul.new {
+    list-style-position: inside;
+    text-align: center;
+    font-size: 30px;
+    color:black;
+}
+button {
+   background-color: black;
+    color: white;
+    padding: 8px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    width: 300px;
+    border-radius: 20px;
+    margin-left: 20px;
+
+}
+
+
+</style>
+<center>
+<h1>View Profile</h1>
+<block>
+<ul class = "new">
+Name : {{ type.aname}} </br>
+Username : {{type.name}} </br>
+Type of user          : {{ type.type }} </br>
+Sex : {{type.sex}} </br>
+Phone Number          : {{ type.phno }} </br>
+Qualification         : {{type.qual}}  </br>
+Field  of Expertise   : {{type.field}} </br>
+</ul>
+{% if request.user|can:'authorize' and not auth %}
+<form  type = "get" action = "auth">
+  <input  id="docpr" type="hidden" name="docauth"  value = {{type.name}} >
+  <button  type="submit">Authorize Doctor</button>
+</br>
+{%endif%}
+
+</block>
+</center>
+{%endblock%}

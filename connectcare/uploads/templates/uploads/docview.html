@@ -1,0 +1,17 @@
+{% extends 'home/Navbar2.html' %}
+{%block content%}
+<title>View Documents</title>
+
+<center>
+  <h1>Uploaded files:</h1>
+  <ul class = "new">
+    {% for obj in documents %}
+      <li>
+        <a href="{{ obj.document.url }}">{{ obj.document.name }}</a>
+        <small>(Uploaded on: {{ obj.uploaded_at }})</br>
+        <b>{{obj.user}}</b></small>
+      </li>
+    {% endfor %}
+  </ul>
+</center>
+{%endblock%}

@@ -1,0 +1,13 @@
+{% extends "forum/base.html" %}
+
+{% block content %}
+<div class='col-sm-6 col-sm-offset-3'>
+<h1>Question</h1>
+
+<form method='POST' action='' enctype='multipart/form-data'>
+{% csrf_token %}
+{{ form.as_p }}
+<input type='submit' class='button1' value='Add Question' />
+</form>
+</div>
+{% endblock content %}

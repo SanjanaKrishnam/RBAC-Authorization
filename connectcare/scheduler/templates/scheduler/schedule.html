@@ -1,0 +1,63 @@
+{% extends 'scheduler/base.html' %}
+{% block title %}ConnectCare|Schedule{% endblock %}
+{% block content %}
+{% load permission_tags %}
+<style>
+legend {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  color: black;
+  background: rgba(255, 255, 255, 0.75);
+  margin: 0;
+  font-size: 3rem;
+ }
+ h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  color: black;
+  background: rgba(255, 255, 255, 0.75);
+  margin: 0;
+  font-size: 3rem;
+ }
+
+</style>
+
+    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    {% if request.user|can:'add_schedule'%}
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit" data-remote="{% url 'add_appointment' %}">
+        Add an Appointment
+      </button>
+    {% endif %}
+    <br />
+    <hr />
+    {% include 'scheduler/error.html' %}
+    {% if schedule_future %}
+        <table class="table table-bordered table-striped">
+           <center><legend>Upcoming appointments for {{user.name}}</legend></center>
+            {% include 'scheduler/appointment_table.html' with schedule=schedule_future editable=True %}
+        </table>
+    {% else %}
+        <h2 class="text-center">No upcoming appointments.</h2>
+    {% endif %}
+    <hr>
+    {% if schedule_past %}
+        <table class="table table-bordered table-striped">
+            <center><legend>Past appointments for {{user.name}}</legend></center>
+            {% include 'scheduler/appointment_table.html' with schedule=schedule_past editable=False %}
+        </table>
+    {% else %}
+        <h2 class="text-center">No past appointments.</h2>
+    {% endif %}
+    <hr />
+    <script>
+        // Remove modal data when it's closed.
+        $(document).on('hidden.bs.modal', function (e) {
+            $(e.target).removeData('bs.modal');
+        });
+    </script>
+{% endblock %}

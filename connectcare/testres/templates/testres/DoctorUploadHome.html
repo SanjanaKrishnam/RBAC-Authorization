@@ -1,0 +1,28 @@
+{% extends 'home/Navbar2.html' %}
+{%block content%}
+{% load permission_tags %}
+<title>View Documents</title>
+
+<center>
+<h1>Upload files for {{name}}</h1></br>
+{% if request.user|can:'upload_results' %}
+  <form type="get" action="uploadtest">
+    <input id = "name" type = "hidden" name ="uploadtest" value = {{user}}>
+    </br>
+    <button id="search_submit" type="submit" >Upload Test Result</button>
+  </form>
+{% endif %}
+
+
+  <ul class = "new">
+    <p style = " color:black;">Uploaded files:</p>
+    {% for obj in documents %}
+      <li>
+        <a href="{{ obj.document.url }}">{{ obj.document.name }}</a>
+        <small>(Uploaded at: {{ obj.uploaded_at }})</small>
+      </li>
+    {% endfor %}
+  </ul>
+  <a style = " font-size:30px;" href = "/test"></br>Return</a>
+</center>
+{% endblock %}

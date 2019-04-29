@@ -1,0 +1,18 @@
+{% extends 'home/Navbar2.html' %}
+{%block content%}
+<Title>Prescriptions</Title>
+<center>
+<h1>Prescribed Medicines:</h1>
+<ul class = "new">
+  {% for obj in documents %}
+    <li>
+      {{ obj.medicine}}</br>
+      {{obj.Notes}} <br>
+<small style = "font-size:20px;">Uploaded by {{obj.doctor}} on {{ obj.date }}</small>
+      </small>
+    </li>
+  {% endfor %}
+</ul>
+<a style = "font-size:30px" href = "/home"></br>Return</a>
+</center>
+{%endblock%}

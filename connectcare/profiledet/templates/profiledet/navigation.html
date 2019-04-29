@@ -1,0 +1,140 @@
+{%load staticfiles%}
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+h1 {font-size: 60px;
+color:black;
+}
+
+
+h2 {
+  color:White;
+  font-size:40px;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    background-image:url("{%static "connectcaremajblur.jpg"%}");
+    background-size: cover;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top:0px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 250px;
+}
+
+.button1 {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    border-radius: 25px;
+}
+
+.button1:hover {
+    background-color: white;
+    color: black;
+}
+
+.container {
+    padding: 60px;
+    font-size: 30px;
+    color: black;
+
+
+}
+</style>
+</head>
+
+<body>
+
+<span style="font-size:45px;cursor:pointer" onclick="openNav()">&#9776;</span>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <h2><center>ConnectCare</center></h2>
+  <a href="/home">Home</a>
+  <a href="/profile">View Profile</a>
+  <a href="/logout">Logout</a>
+</div>
+
+<div id="main">
+  {% block content %}
+  {% endblock %}
+
+</div>
+
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+}
+</script>
+
+
+
+</body>
+</html>

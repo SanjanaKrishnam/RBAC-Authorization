@@ -1,0 +1,27 @@
+{% extends 'profiledet/navigation.html' %}
+
+{%block content%}
+
+<center><h1> Profile details </h1></center>
+<b>
+<center>
+
+<block>
+
+<div class = "container">
+User : {{ type.aname}} </br>
+Username : {{type.name}} </br>
+Type of user  : {{ type.type }} </br>
+Sex : {{type.sex}} </br>
+Phone Number  : {{ type.phno }} </br>
+Date of Birth : {{ type.dob  }} </br>
+Blood Group   : {{ type.bg  }} </br>
+{% if user|has_role:'doctor' %}
+	Qualification         : {{type.qual}}  </br>
+	Field  of Expertise   : {{type.field}} </br>
+{%endif%}
+</div>
+</center>
+</b>
+</block>
+{%endblock%}
